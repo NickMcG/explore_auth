@@ -35,3 +35,7 @@ explore_auth-*.tar
 npm-debug.log
 /assets/node_modules/
 
+
+# Project-Specific
+env-vars.txt
+/priv/cert

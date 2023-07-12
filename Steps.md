@@ -39,3 +39,16 @@ committed to a repo.
   * `git init` and commit this to enable version control going forward
   * `mix ecto.create` - to create the DB
   * `mix phx.server` - to run the server (on whatever local port is configured in `/config/dev.exs`; default is 4000)
+
+## Initial Auth
+
+This section is getting to the point where I can go to a specific URL, go through the federated authentication process, and
+see my details (name, email, etc.) on the other side. Initial auth provider will be Google.
+
+* Add `ueberauth`, `oauth2`, and `ueberauth_google` packages to `mix.exs`
+* Retrieved [Google OIDC Client/Secret](https://console.developers.google.com/home)
+  * Also set them as environment variables locally by putting `GOOGLE_CLIENT_ID=....` in the terminal
+* Add configuration for ueberauth in `config/config.exe` and `config/runtime.exs`
+* Setup local SSL by running `mix phx.gen.cert`
+  * I currently have the SSL bits commented out. The HTTP -> HTTPS forced redirect doesn't appear to be working, so I have it commented out for now.
+* Add an AuthController and set it up in the router

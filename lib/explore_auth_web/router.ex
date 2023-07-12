@@ -14,6 +14,16 @@ defmodule ExploreAuthWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/auth", ExploreAuthWeb do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+    post "/:provider/callback", AuthController, :callback
+
+    #delete "/logout", AuthController, :delete
+  end
+
   scope "/", ExploreAuthWeb do
     pipe_through :browser
 
