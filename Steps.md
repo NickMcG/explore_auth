@@ -35,4 +35,7 @@ committed to a repo.
   * `mix archive.install hex phx_new` - this will install the Phoenix generator for your version of Elixir
   * `mix phx.new explore_auth` - this will create a standard Phoenix project (using Ecto and LiveView)
 * Copy the `.tools-version` file in the parent folder into the `explore_auth` folder so that the repo will know what versions it was built against
-* Change directories to the new folder and run `git init` and commit this to enable version control going forward
+* Change directories to the new folder and run:
+  * `git init` and commit this to enable version control going forward
+  * `mix ecto.create` - to create the DB
+  * `mix phx.server` - to run the server (on whatever local port is configured in `/config/dev.exs`; default is 4000)
