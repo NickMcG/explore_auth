@@ -51,4 +51,5 @@ see my details (name, email, etc.) on the other side. Initial auth provider will
 * Add configuration for ueberauth in `config/config.exe` and `config/runtime.exs`
 * Setup local SSL by running `mix phx.gen.cert`
   * I currently have the SSL bits commented out. The HTTP -> HTTPS forced redirect doesn't appear to be working, so I have it commented out for now.
-* Add an AuthController and set it up in the router
+* Add an `auth_controller.ex` and set it up in the router
+* Add `user_from_auth.ex` to handle extracting relevant details from the auth response and use it in `auth_controller.ex`

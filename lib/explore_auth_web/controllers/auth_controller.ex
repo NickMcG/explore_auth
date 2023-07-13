@@ -2,6 +2,8 @@ defmodule ExploreAuthWeb.AuthController do
   use ExploreAuthWeb, :controller
   plug Ueberauth
 
+  alias ExploreAuth.UserFromAuth
+
   def delete(conn, _params) do
     conn
     |> put_flash(:info, "You have been logged out!")
@@ -16,7 +18,9 @@ defmodule ExploreAuthWeb.AuthController do
   end
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    IO.inspect(auth)
+    auth
+    |> UserFromAuth.extract_info()
+    |> IO.inspect()
     redirect(conn, to: "/")
   end
 end
